@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+  <!-- Require dependencies -->
+  <link rel="stylesheet" href="https://unpkg.com/handsfree@6.0.1/dist/handsfreejs/handsfree.css">
+  <script src="https://unpkg.com/handsfree@6.0.1/dist/handsfreejs/handsfree.js"></script>
+  
+  <style>
+    button {font-size: 24px; padding: 20px}
+  </style>
+</head>
+<body>
+  <!-- Let's always ask the user to start -->
+  <button onclick="handsfree.start()">Start Webcam</button>
+  <button onclick="handsfree.stop()">Stop Webcam</button>
+  
+  <script>
+    // Create a new instance. Use one instance for each camera
+    const handsfree = new Handsfree({
+    bodypix: {enabled: true}
+
+})
+const captureSpeed = 500
+const deleteSpeed = 3000
+
+
+    // Create a simple plugin that displays pointer values on every frame
+    Handsfree.use('consoleLogger', ({head}) => {
+      console.log(head.rotation)
+    })
+  </script>
+</body>
